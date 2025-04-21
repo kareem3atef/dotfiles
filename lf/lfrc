@@ -1,0 +1,300 @@
+
+# Basic vars
+set shellopts '-eu'
+set ifs "\n"
+set scrolloff 10
+set icons
+set period 1
+set hiddenfiles ".*:*.aux:*.log:*.bbl:*.bcf:*.blg:*.run.xml"
+#set cleaner '~/.config/lf/cleaner'
+#set previewer '~/.config/lf/scope'
+#set cleaner ~/.config/lf/kitty_cleaner
+#set previewer ~/.config/lf/kitty_preview
+#set previewer '~/.conifg/lf/preview'
+#set previewer ~/.config/lf/previewSandbox.sh
+
+set previewer ctpv
+set cleaner ctpvclear
+&ctpv -s $id
+&ctpvquit $id
+#set previewer stpv
+#set cleaner stpvimgclr
+#&stpvimg --listen $id
+#cmd on-quit $stpvimg --end $id
+set autoquit true
+set number
+set relativenumber
+set drawbox true
+
+# Show number of files in dirs instead of single size
+set info size
+set dircounts
+#set hiddenfiles true
+
+
+
+# cmds/functions
+
+
+
+cmd open ${{
+    case $(file --mime-type "$(readlink -f $f)" -b) in
+	application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) localc $fx ;;
+	image/vnd.djvu|application/pdf|application/octet-stream|application/postscript) setsid -f zathura $fx >/dev/null 2>&1;;
+        text/*|application/json|inode/x-empty|application/x-subrip) $EDITOR $fx;;
+	image/x-xcf) setsid -f gimp $f >/dev/null 2>&1;;
+	image/svg+xml) display -- $f ;;
+	image/*) rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\|avif\|tif\|ico\)\(_large\)*$" |
+		setsid -f nsxiv -aio 2>&1 | while read -r file; do
+			[ -z "$file" ] && continue
+			lf -remote "send select \"$file\""
+			lf -remote "send toggle"
+		done &
+		;;
+	audio/*|video/x-ms-asf) mpv --audio-display=no $f ;;
+	video/*) setsid -f vlc -quiet $f  >/dev/null 2>&1 ;;
+	application/pdf|application/vnd.djvu|application/epub*) setsid -f sioyek $fx >/dev/null 2>&1;;
+	application/pgp-encrypted) $EDITOR $fx ;;
+	application/vnd.openxmlformats-officedocument.wordprocessingml.document|application/vnd.oasis.opendocument.text|application/vnd.openxmlformats-officedocument.spreadsheetml.sheet|application/octet-stream|application/vnd.oasis.opendocument.spreadsheet|application/vnd.oasis.opendocument.spreadsheet-template|application/vnd.openxmlformats-officedocument.presentationml.presentation|application/vnd.oasis.opendocument.presentation-template|application/vnd.oasis.opendocument.presentation|application/vnd.ms-powerpoint|application/vnd.oasis.opendocument.graphics|application/vnd.oasis.opendocument.graphics-template|application/vnd.oasis.opendocument.formula|application/vnd.oasis.opendocument.database) setsid -f libreoffice $fx >/dev/null 2>&1;;
+        *) for f in $fx; do setsid -f $OPENER $f >/dev/null 2>&1; done;;
+    esac
+}}
+
+cmd mkdir ${{
+  printf "Directory Name: "
+  read ans
+  mkdir $ans
+}}
+
+cmd mkfile ${{
+  printf "File Name: "
+  read ans
+  $EDITOR $ans
+}}
+
+cmd chmod ${{
+  printf "Mode Bits: "
+  read ans
+
+  for file in "$fx"
+  do
+    chmod $ans $file
+  done
+
+  lf -remote 'send reload'
+}}
+cmd sudomkfile ${{
+  printf "File Name: "
+  read ans
+  sudo $EDITOR $ans
+}}
+
+
+cmd extract ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	printf "%s\n\t" "$fx"
+	printf "extract?[y/N]"
+	read ans
+	[ $ans = "y" ] && {
+		case $fx in
+			*.tar.bz2)   tar xjf $fx     ;;
+			*.tar.gz)    tar xzf $fx     ;;
+			*.bz2)       bunzip2 $fx     ;;
+			*.rar)       unrar e $fx     ;;
+			*.gz)        gunzip $fx      ;;
+			*.tar)       tar xf $fx      ;;
+			*.tbz2)      tar xjf $fx     ;;
+			*.tgz)       tar xzf $fx     ;;
+			*.zip)       unzip $fx       ;;
+			*.Z)         uncompress $fx  ;;
+			*.7z)        7z x $fx        ;;
+			*.tar.xz)    tar xf $fx      ;;
+		esac
+	}
+}}
+
+cmd delete ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	printf "%s\n\t" "$fx"
+	printf "delete?[y/N]"
+	read ans
+	[ $ans = "y" ] && rm -rf -- $fx
+}}
+
+cmd moveto ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	clear; echo "Move to where?"
+	dest="$(sed -e 's/\s*#.*//' -e '/^$/d' -e 's/^\S*\s*//' ${XDG_CONFIG_HOME:-$HOME/.config}/shell/bm-dirs | fzf | sed 's|~|$HOME|')" &&
+	for x in $fx; do
+		eval mv -iv \"$x\" \"$dest\"
+	done &&
+	notify-send "🚚 File(s) moved." "File(s) moved to $dest."
+}}
+
+cmd copyto ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	clear; echo "Copy to where?"
+	dest="$(sed -e 's/\s*#.*//' -e '/^$/d' -e 's/^\S*\s*//' ${XDG_CONFIG_HOME:-$HOME/.config}/shell/bm-dirs | fzf | sed 's|~|$HOME|')" &&
+	for x in $fx; do
+		eval cp -ivr \"$x\" \"$dest\"
+	done &&
+	notify-send "📋 File(s) copied." "File(s) copies to $dest."
+}}
+# preview the highlighted file with quicklook (macOS)
+cmd ql_preview &{{
+  qlmanage -p $fx &> /dev/null;
+}}
+
+cmd setbg "$1"
+
+cmd bulkrename ${{
+    tmpfile_old="$(mktemp)"
+    tmpfile_new="$(mktemp)"
+
+    [ -n "$fs" ] && fs=$(basename -a $fs) || fs=$(ls)
+
+    echo "$fs" > "$tmpfile_old"
+    echo "$fs" > "$tmpfile_new"
+    $EDITOR "$tmpfile_new"
+
+    [ "$(wc -l < "$tmpfile_old")" -eq "$(wc -l < "$tmpfile_new")" ] || { rm -f "$tmpfile_old" "$tmpfile_new"; exit 1; }
+
+    paste "$tmpfile_old" "$tmpfile_new" | while IFS="$(printf '\t')" read -r src dst
+    do
+        [ "$src" = "$dst" ] || [ -e "$dst" ] || mv -- "$src" "$dst"
+    done
+
+    rm -f "$tmpfile_old" "$tmpfile_new"
+    lf -remote "send $id unselect"
+}}
+
+# Bindings
+
+# Mouse
+map <m-down> down
+map <m-up> up
+map <m-1> open
+map <m-3> updir
+
+
+
+
+
+map <c-f> $lf -remote "send $id select \"$(fzf)\""
+map J $lf -remote "send $id cd $(sed -e 's/\s*#.*//' -e '/^$/d' -e 's/^\S*\s*//' ${XDG_CONFIG_HOME:-$HOME/.config}/shell/bm-dirs | fzf)"
+
+# Delete
+map D delete
+map <delete> delete
+map <trash> delete
+map C copy
+map X cut
+
+map <c-r> reload
+map <c-s> set hidden!
+map H top
+map L bottom
+map ch chmod
+
+map <enter> shell
+
+# Navigation
+map z push :z
+map [ scroll_parent_up
+map ] scroll_parent_down
+map gk cd ~/Desktop
+map gd cd ~/Downloads
+map gh cd /home/kareem
+map g. cd ~/.config
+map gf cd ~/entertainment/Films
+map gw cd ~/work
+map ge cd ~/entertainment
+map gb cd ~/entertainment/books
+map gp cd ~/Pictures
+map gt cd ~/test
+map gv cd ~/Videos
+# Creating
+map c
+map cf push %touch<space>
+map m
+map md push %mkdir<space>
+map mD push :mkdir<space>""<left>
+# Paste
+map p
+map pp paste
+map pl paste_link
+map pr paste_rename
+
+
+
+# Selecting
+#map f fzf
+map <esc> unselect; clear
+map <space> :toggle; down
+map F glob-select-wrapper
+map u
+map uu unselect
+map uy clear
+map ud clear
+map a :unselect; invert
+
+
+map v ql_preview
+
+# Show help
+map g? $lf -doc | $PAGER; clear
+
+# execute current file (must be executable)
+map x
+map xx $$f
+map xX !$f
+
+# Disk usage
+map ug %du -sh $f
+
+# Compressing
+map t
+map * tag-toggle
+map tz zip
+map tt tar
+map e extract
+
+# define a custom 'open' command
+
+
+# define a custom 'open' command
+map o $mimeopen "$f"
+map O $mimeopen --ask "$f"
+
+#map A :rename; cmd-end # at the very end
+map R push A<c-u> # new rename
+#map I :rename; cmd-home # at the very beginning
+map i :rename # before extension
+#map a :rename; cmd-right # after extension
+#map B bulkrename
+#map b $setbg $f
+
+#map <c-e> down
+#map <c-y> up
+map V push :!nvim<space>
+
+map W $setsid -f $TERMINAL >/dev/null 2>&1
+
+map Y $printf "%s" "$fx" | xclip -selection clipboard
+
+# Source Bookmarks
+
+
+# to open video or folder of videos with vlc media player
+map v
+map vlc %vlc $f > /dev/null 2> /dev/null &
+
+# to suggest film and to update filmdb
+map S
+map Sf %suggest_film
+map Sd %filmdb
+

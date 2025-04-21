@@ -1,0 +1,102 @@
+" Basic Setup
+set nocompatible            " Disable vi compatibility
+filetype plugin indent on   " Enable filetype detection and plugins
+syntax enable               " Enable syntax highlighting
+
+" Visual Settings
+set number                  " Show line numbers
+set relativenumber          " Relative line numbers
+set cursorline              " Highlight current line
+set showcmd                 " Show command in bottom bar
+set wildmenu                " Visual autocomplete for command menu
+set lazyredraw              " Redraw screen only when needed
+set showmatch               " Highlight matching parentheses
+set termguicolors           " Enable true colors support
+"set clipboard=unnamedplus
+"set clipboard=exclude:.*
+colorscheme desert          " Set color scheme (change to your preference)
+
+" Editing Behavior
+set tabstop=4               " Number of visual spaces per TAB
+set softtabstop=4           " Number of spaces in tab when editing
+set shiftwidth=4            " Number of spaces for autoindent
+set expandtab               " Convert tabs to spaces
+set autoindent              " Autoindent new lines
+set smartindent             " Smart autoindenting
+set backspace=indent,eol,start " Make backspace work normally
+
+" Search Settings
+set incsearch               " Search as characters are entered
+set hlsearch                " Highlight matches
+set ignorecase              " Case-insensitive search
+set smartcase               " Case-sensitive if search contains uppercase
+
+" File Handling
+set encoding=utf-8          " Set default encoding
+set hidden                  " Allow buffer switching without saving
+set nobackup                " Disable backup files
+set nowritebackup           " Disable write backup
+set noswapfile              " Disable swap files
+set undodir=~/.vim/undodir  " Undo file directory
+set undofile                " Persistent undo history
+
+" Key Mappings
+let mapleader = " "         " Set leader key to space
+
+" Window Navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Useful Shortcuts
+nnoremap <leader>w :w<CR>           " Save file
+nnoremap <leader>q :q<CR>           " Quit
+nnoremap <leader>h :nohlsearch<CR>  " Clear search highlights
+nnoremap <leader>e :Explore<CR>     " File explorer
+
+" Plugin Management (using vim-plug)
+call plug#begin('~/.vim/plugged')
+
+" Essential Plugins
+Plug 'preservim/nerdtree'           " File explorer
+Plug 'vim-airline/vim-airline'      " Status bar
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-commentary'         " Comment/uncomment lines
+Plug 'tpope/vim-surround'           " Surround text objects
+Plug 'jiangmiao/auto-pairs'         " Automatic bracket pairing
+Plug 'ctrlpvim/ctrlp.vim'           " Fuzzy file finder
+"Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' } " Code completion
+
+call plug#end()
+
+" Plugin Configurations
+
+" NERDTree Settings
+nnoremap <leader>n :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
+
+" Airline Settings
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'minimalist'
+
+" CtrlP Settings
+let g:ctrlp_map = '<leader>p'
+let g:ctrlp_cmd = 'CtrlP'
+
+" YouCompleteMe Settings
+"let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+"let g:ycm_autoclose_preview_window_after_completion = 1
+
+" Miscellaneous
+set mouse=a                 " Enable mouse support
+set clipboard=unnamedplus   " Use system clipboard
+set ttimeoutlen=10          " Reduce command timeout
+set scrolloff=8             " Keep 8 lines visible around cursor
+set updatetime=100          " Faster completion response
+
+" File Type Specific Settings
+autocmd FileType python setlocal foldmethod=indent
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+autocmd FileType html setlocal shiftwidth=2 tabstop=2
+autocmd FileType css setlocal shiftwidth=2 tabstop=2

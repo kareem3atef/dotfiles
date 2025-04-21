@@ -1,0 +1,2 @@
+#The below is for kitty but needs fixing.
+	kitty +kitten icat --clear --stdin no --silent --transfer-mode file < /dev/null > /dev/tty
