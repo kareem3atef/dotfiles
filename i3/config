@@ -231,7 +231,8 @@ bindsym $mod+z exec discord
 bindsym Shift+$mod+v exec gpaste-client ui
 bindsym $mod+c exec code
 #bindsym $mod+t exec nautilus
-bindsym $mod+t exec thunar
+bindsym $mod+t exec --no-startup-id thunderbird
+bindsym $mod+n exec stremio
 bindsym $mod+u exec --no-startup-id kitty -e zsh -c 'source ~/.zshrc && lf'
 bindsym $mod+Ctrl+Shift+p exec poweroff
 
