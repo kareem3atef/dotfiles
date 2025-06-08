@@ -218,11 +218,8 @@ exec xinput set-prop "MSFT0001:00 04F3:3140 Touchpad" "libinput Tapping Enabled"
 exec xinput set-prop "MSFT0001:00 04F3:3140 Touchpad" "libinput Natural Scrolling Enabled" 1
 
 #change layout
-exec_always "setxkbmap -layout us,ara 2> /dev/null \
-setxkbmap -option 'grp:alt_space_toggle' 2> /dev/null \
-killall xxkb 2> /dev/null \
-xxkb 2> /dev/null & "
-
+exec_always ~/.config/layout.sh
+# exec_always --no-startup-id setxkbmap -layout 'us,ara' 2> /dev/null; setxkbmap -option 'grp:alt_space_toggle' 2> /dev/null ; killall xxkb 2> /dev/null; xxkb 2> /dev/null &
 
 
 
@@ -258,7 +255,12 @@ bindsym $mod+Shift+s exec --no-startup-id maim -s | tee ~/Pictures/Screenshots/$
 
 
 # to screencast with ffmpeg
-bindsym Ctrl+Shift+r exec --no-startup-id ffmpeg -f x11grab -video_size 1920x1080 -i :0.0 -f pulse -i alsa_output.pci-0000_05_00.6.analog-stereo.monitor -c:v libx264 -crf 28 -threads 10 -c:a aac -b:a 192k -pix_fmt yuv420p -vsync 1  /home/kareem/Videos/Screencasts/$(date +%s).mp4 
+bindsym Ctrl+Shift+r exec --no-startup-id ffmpeg -f x11grab -video_size 1920x1080 -i ${DISPLAY} -f pulse -i alsa_output.pci-0000_05_00.6.analog-stereo.monitor -c:a aac -b:a 192k -pix_fmt yuv420p -vsync 1 /home/kareem/Videos/Screencasts/$(date +%s).mp4 
+
+#bindsym Ctrl+Shift+r exec --no-startup-id ffmpeg -f x11grab -video_size 1920x1080 -i ${DISPLAY} -f pulse -i alsa_output.pci-0000_05_00.6.analog-stereo.monitor -c:v hevc_nvenc -preset p7 -rc vbr -cq 30 -qmin 30 -qmax 34 -b:v 0 -c:a aac -b:a 128k -vsync 1 /home/kareem/Videos/Screencasts/$(date +%s).mp4 
+
+
+#bindsym Ctrl+Shift+r exec --no-startup-id ffmpeg -f x11grab -video_size 1920x1080 -framerate 30 -i ${DISPLAY} -f pulse -i alsa_output.pci-0000_05_00.6.analog-stereo.monitor -c:v hevc_nvenc -preset p6 -tune hq -rc vbr -cq 24 -b:v 0 -c:a aac -b:a 192k -pix_fmt yuv420p -vsync 1 /home/kareem/Videos/Screencasts/$(date +%s).mp4
 
 bindsym Ctrl+Shift+e exec --no-startup-id pkill ffmpeg
 

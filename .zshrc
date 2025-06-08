@@ -178,7 +178,9 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#abd8eb"
 PATH=$PATH:/usr/local/go/bin
 PATH=$PATH:$HOME/go/bin
 ####
-
+#add brew to the path
+PATH=$PATH:/home/linuxbrew/.linuxbrew/bin
+####
 
 
 ### a trivial way to be able to change the backlight brightness ###
@@ -292,3 +294,6 @@ export CTPV_CLEANUP=1
 ## alias for wifi nmtui connection ##
 alias wifi=nmtui
 #####
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
