@@ -297,3 +297,10 @@ alias wifi=nmtui
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
+
+
+
+
+#### fontss ####
+xset +fp /home/kareem/.local/share/fonts
+xset fp rehash

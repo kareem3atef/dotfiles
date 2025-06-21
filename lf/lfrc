@@ -233,10 +233,10 @@ map pr paste_rename
 
 
 # Selecting
-#map f fzf
+# map f fzf
 map <esc> unselect; clear
 map <space> :toggle; down
-map F glob-select-wrapper
+# map F glob-select-wrapper
 map u
 map uu unselect
 map uy clear

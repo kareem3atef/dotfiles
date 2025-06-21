@@ -1,8 +1,9 @@
 [module/battery]
 type = internal/battery
 battery = BAT0
-adapter = ADP1
+adapter = ADP0
 full-at = 98
+low-at = 10
 
 label-discharging-foreground = ${colors.battery-discharging}
 label-charging-foreground = ${colors.battery-charging}

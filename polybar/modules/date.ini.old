@@ -1,11 +1,33 @@
+
 [module/date]
 type = internal/date
-interval = 1
 
-time = "%H:%M"
-time-alt = "%a, %b %d %H:%M:%S"
+; Seconds to sleep between updates
+interval = 1.0
 
-format = %{T3} %{T-} <label>
+; See "http://en.cppreference.com/w/cpp/io/manip/put_time" for details on how to format the date string
+; NOTE: if you want to use syntax tags here you need to use %%{...}
+time-alt = %A, %d %B %Y %k:%M:%S
+
+; Optional time format
+time =%I:%M %p
+
+; if `date-alt` or `time-alt` is defined, clicking
+; the module will toggle between formats
+;date-alt = It's %A, %d %B %Y
+;time-alt = at %k:%M:%S
+
+; Available tags:
+;   <label> (default)
+format = <label>
+format-prefix = "%{T3} %{T-} " 
 format-background = ${colors.bg-module}
 format-foreground = ${colors.fg}
-label = %{T3}%time%%{T-}
+
+; Available tokens:
+;   %date%
+;   %time%
+; Default: %date%
+;label = %date% %time%
+label = %time%
+
