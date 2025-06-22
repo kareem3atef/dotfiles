@@ -1,0 +1,35 @@
+[module/backlight]
+type = internal/backlight
+
+card = amdgpu_bl1
+
+enable-scroll = true
+scroll-interval = 5
+
+
+; Formatting options
+label = %percentage%%
+format =  <label>
+format-alt =  %percentage%%
+
+; Ramp icons (using Font Awesome, Nerd Fonts, or similar)
+;ramp-0 = 🌑
+;ramp-1 = 🌒
+;ramp-2 = 🌓
+;ramp-3 = 🌔
+;ramp-4 = 🌕
+
+
+; Alternatively with icon fonts:
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+
+; Mouse control
+
+
+
+label-background = ${colors.bg-module}
+format-background = ${colors.bg-module}
