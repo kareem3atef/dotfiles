@@ -190,7 +190,7 @@ map J $lf -remote "send $id cd $(sed -e 's/\s*#.*//' -e '/^$/d' -e 's/^\S*\s*//'
 # Delete
 map D delete
 map <delete> delete
-map <trash> delete
+map d %trash-put $fx
 map C copy
 map X cut
 

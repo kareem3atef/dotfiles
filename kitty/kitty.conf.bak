@@ -5,7 +5,7 @@ url_style curly
 detect_urls yes
 
 
-/* font_family      FiraCode NF */
+font_family      Meslo LG M Regular
 /* font_family      DejaVu Sans */
 /* font_family      Cascadia Mono PL */
 /* font_family      DaddyTimeMono */
@@ -101,6 +101,7 @@ disable_ligatures never
 #: For the exact syntax to use for individual features, see the
 #: Harfbuzz documentation <https://harfbuzz.github.io/harfbuzz-hb-
 #: common.html#hb-feature-from-string>.
+harfbuzz on
 
 #: Note that this code is indexed by PostScript name, and not the font
 #: family. This allows you to define very precise feature settings;
@@ -707,7 +708,7 @@ inactive_tab_font_style normal
 
 #: The foreground and background colors
 
-background_opacity 0.95 
+background_opacity 0.80 
 
 #: The opacity of the background. A number between 0 and 1, where 1 is
 #: opaque and 0 is fully transparent.  This will only work if
@@ -1464,7 +1465,7 @@ map kitty_mod+f6 debug_config
 
 
 # BEGIN_KITTY_THEME
-# GitHub Dark Dimmed
+# IR Black
 include current-theme.conf
 # END_KITTY_THEME
 
