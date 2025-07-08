@@ -303,3 +303,7 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 # notification system (dunst)
 exec --no-startup-id dunst
 
+
+# to lock the screen
+bindsym Ctrl+Shift+l exec --no-startup-id i3lock-fancy  
+
