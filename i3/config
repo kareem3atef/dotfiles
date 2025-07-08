@@ -202,9 +202,10 @@ bindsym $mod+r mode "resize"
 exec_always --no-startup-id picom 
 #exec --no-startup-id nitrogen --restore
 exec_always --no-startup-id ~/.config/polybar/launch.sh
-#exec_always --no-startup-id feh --bg-fill ~/Pictures/lea_seydoux.jpg
-#exec_always --no-startup-id feh --bg-scale ~/Pictures/.lea_seydoux/wallpaperflare.com_wallpaper.jpg
+# exec_always --no-startup-id feh --bg-fill ~/Pictures/lea_seydoux.jpg
+# exec_always --no-startup-id feh --bg-scale ~/Pictures/.lea_seydoux/wallpaperflare.com_wallpaper.jpg
 exec_always --no-startup-id feh --bg-fill ~/Pictures/.lea_seydoux/1744086.jpg
+# exec_always --no-startup-id feh --bg-fill ~/Pictures/Screenshots/1751866980-481053522.png
 exec_always --no-startup-id  $HOME/.config/i3/i3-master-stack/i3_master
 # swap to master node
 bindsym $mod+m nop swap master 
@@ -288,4 +289,17 @@ bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioPause exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+
+
+
+# assignment worksapces
+# assign [class="discord"] $ws1
+# assign [class="brave-browser"] $ws1
+# assign [class="web.whatsapp.com"] $ws3
+# assign [class="code"] $ws10
+# assign [class="code - insiders"] $ws11
+
+
+# notification system (dunst)
+exec --no-startup-id dunst
 

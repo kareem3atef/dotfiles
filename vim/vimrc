@@ -82,7 +82,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-commentary'         " Comment/uncomment lines
 Plug 'tpope/vim-surround'           " Surround text objects
 Plug 'jiangmiao/auto-pairs'         " Automatic bracket pairing
-" Plug 'ctrlpvim/ctrlp.vim'           " Fuzzy file finder
+Plug 'ctrlpvim/ctrlp.vim'           " Fuzzy file finder
 "Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' } " Code completion
 
 call plug#end()
