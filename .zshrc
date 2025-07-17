@@ -1,5 +1,5 @@
 # Allow vi mode in zsh
-#bindkey -v
+# bindkey -v
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -149,6 +149,12 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # alias bat=batcat
 alias ls=lsd
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
+
+
 export BAT_THEME="Monokai Extended"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -314,3 +320,20 @@ done
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/kareem/.miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/kareem/.miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/kareem/.miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/kareem/.miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+fpath+=${ZDOTDIR:-~}/.zsh_functions
