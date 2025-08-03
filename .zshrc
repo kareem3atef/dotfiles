@@ -47,33 +47,34 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 #
 # DISABLE_LS_COLORS="true"
 # enable color support of ls, less and man, and also add handy aliases
-#if [ -x /usr/bin/dircolors ]; then
-#    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-#    export LS_COLORS="$LS_COLORS:ow=30;44:" # fix ls color for folders with 777 permissions
-#
-#    #alias ls='lsd'
-#    #alias dir='dir --color=auto'
-#    #alias vdir='vdir --color=auto'
-#
-#    alias grep='grep --color=auto'
-#    alias fgrep='fgrep --color=auto'
-#    alias egrep='egrep --color=auto'
-#    alias diff='diff --color=auto'
-#    alias ip='ip --color=auto'
-#
-#    export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
-#    export LESS_TERMCAP_md=$'\E[1;36m'     # begin bold
-#    export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
-#    export LESS_TERMCAP_so=$'\E[01;33m'    # begin reverse video
-#    export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
-#    export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
-#    export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
-#
-#    # Take advantage of $LS_COLORS for completion as well
-#    zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-#    zstyle ':completion:::kill::processes' list-colors '=(#b) #([0-9]#)=0=01;31'
-#fi
-#
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    export LS_COLORS="$LS_COLORS:ow=30;44:" # fix ls color for folders with 777 permissions
+
+    #alias ls='lsd'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+    alias diff='diff --color=auto'
+    alias ip='ip --color=auto'
+    alias fzf="fzf --style full --preview 'fzf-preview.sh {}' --bind 'focus:transform-header:file --brief {}'"
+
+    export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
+    export LESS_TERMCAP_md=$'\E[1;36m'     # begin bold
+    export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
+    export LESS_TERMCAP_so=$'\E[01;33m'    # begin reverse video
+    export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
+    export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
+    export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
+
+    # Take advantage of $LS_COLORS for completion as well
+    zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+    zstyle ':completion:::kill::processes' list-colors '=(#b) #([0-9]#)=0=01;31'
+fi
+
 
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
@@ -185,129 +186,132 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#abd8eb"
 ######
 
 
-#
-### add go the path ##
-#PATH=$PATH:/usr/local/go/bin
-#PATH=$PATH:$HOME/go/bin
+
+## add go the path ##
+PATH=$PATH:/usr/local/go/bin
+PATH=$PATH:/home/kareem/.local/bin
+PATH=$PATH:$HOME/go/bin
+####
+#add brew to the path
+PATH=$PATH:/home/linuxbrew/.linuxbrew/bin
+####
+
+
+### a trivial way to be able to change the backlight brightness ###
+#chmod 666 /sys/class/backlight/amdgpu_bl1/brightness
+##########
+
+
+
+####### lf icons #####
+export LC_CTYPE=en_US.UTF-8
+
+#neofetch
+export LF_ICONS="di=📁:\
+fi=📃:\
+tw=🤝:\
+ow=📂:\
+ln=⛓:\
+or=❌:\
+ex=🎯:\
+*.txt=✍:\
+*.mom=✍:\
+*.me=✍:\
+*.ms=✍:\
+*.png=🖼:\
+*.webp=🖼:\
+*.ico=🖼:\
+*.jpg=📸:\
+*.jpe=📸:\
+*.jpeg=📸:\
+*.gif=🖼:\
+*.svg=🗺:\
+*.tif=🖼:\
+*.tiff=🖼:\
+*.xcf=🖌:\
+*.html=🌎:\
+*.xml=📰:\
+*.gpg=🔒:\
+*.css=🎨:\
+*.pdf=📚:\
+*.djvu=📚:\
+*.epub=📚:\
+*.csv=📓:\
+*.xlsx=📓:\
+*.tex=📜:\
+*.md=📘:\
+*.r=📊:\
+*.R=📊:\
+*.rmd=📊:\
+*.Rmd=📊:\
+*.m=📊:\
+*.mp3=🎵:\
+*.opus=🎵:\
+*.ogg=🎵:\
+*.m4a=🎵:\
+*.flac=🎼:\
+*.wav=🎼:\
+*.mkv=🎥:\
+*.mp4=🎥:\
+*.webm=🎥:\
+*.mpeg=🎥:\
+*.avi=🎥:\
+*.mov=🎥:\
+*.mpg=🎥:\
+*.wmv=🎥:\
+*.m4b=🎥:\
+*.flv=🎥:\
+*.zip=📦:\
+*.rar=📦:\
+*.7z=📦:\
+*.tar.gz=📦:\
+*.z64=🎮:\
+*.v64=🎮:\
+*.n64=🎮:\
+*.gba=🎮:\
+*.nes=🎮:\
+*.gdi=🎮:\
+*.1=ℹ:\
+*.nfo=ℹ:\
+*.info=ℹ:\
+*.log=📙:\
+*.iso=📀:\
+*.img=📀:\
+*.bib=🎓:\
+*.ged=👪:\
+*.part=💔:\
+*.torrent=🔽:\
+*.jar=♨:\
+*.java=♨:\
+"
+
+
+
+##### the ctpv configurations ###
+export CTPV_WORKDIR=~/.cache/ctpv
+export CTPV_CLEANUP=1
+##########################3
+
+
+
+
+
+#### harfbuzz libs and src #####33
+#export LD_LIBRARY_PATH=/home/kareem/Documents/harfbuzz/harfbuzz-11.0.0/src:$LD_LIBRARY_PATH
+#export PKG_CONFIG_PATH=/home/kareem/Documents/harfbuzz/harfbuzz-11.0.0:$PKG_CONFIG_PATH
+###################
+#export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
+
+
+
+
+## alias for wifi nmtui connection ##
+alias wifi=nmtui
 #####
-##add brew to the path
-#PATH=$PATH:/home/linuxbrew/.linuxbrew/bin
-#####
-#
-#
-#### a trivial way to be able to change the backlight brightness ###
-##chmod 666 /sys/class/backlight/amdgpu_bl1/brightness
-###########
-#
-#
-#
-######## lf icons #####
-#export LC_CTYPE=en_US.UTF-8
-#
-##neofetch
-#export LF_ICONS="di=📁:\
-#fi=📃:\
-#tw=🤝:\
-#ow=📂:\
-#ln=⛓:\
-#or=❌:\
-#ex=🎯:\
-#*.txt=✍:\
-#*.mom=✍:\
-#*.me=✍:\
-#*.ms=✍:\
-#*.png=🖼:\
-#*.webp=🖼:\
-#*.ico=🖼:\
-#*.jpg=📸:\
-#*.jpe=📸:\
-#*.jpeg=📸:\
-#*.gif=🖼:\
-#*.svg=🗺:\
-#*.tif=🖼:\
-#*.tiff=🖼:\
-#*.xcf=🖌:\
-#*.html=🌎:\
-#*.xml=📰:\
-#*.gpg=🔒:\
-#*.css=🎨:\
-#*.pdf=📚:\
-#*.djvu=📚:\
-#*.epub=📚:\
-#*.csv=📓:\
-#*.xlsx=📓:\
-#*.tex=📜:\
-#*.md=📘:\
-#*.r=📊:\
-#*.R=📊:\
-#*.rmd=📊:\
-#*.Rmd=📊:\
-#*.m=📊:\
-#*.mp3=🎵:\
-#*.opus=🎵:\
-#*.ogg=🎵:\
-#*.m4a=🎵:\
-#*.flac=🎼:\
-#*.wav=🎼:\
-#*.mkv=🎥:\
-#*.mp4=🎥:\
-#*.webm=🎥:\
-#*.mpeg=🎥:\
-#*.avi=🎥:\
-#*.mov=🎥:\
-#*.mpg=🎥:\
-#*.wmv=🎥:\
-#*.m4b=🎥:\
-#*.flv=🎥:\
-#*.zip=📦:\
-#*.rar=📦:\
-#*.7z=📦:\
-#*.tar.gz=📦:\
-#*.z64=🎮:\
-#*.v64=🎮:\
-#*.n64=🎮:\
-#*.gba=🎮:\
-#*.nes=🎮:\
-#*.gdi=🎮:\
-#*.1=ℹ:\
-#*.nfo=ℹ:\
-#*.info=ℹ:\
-#*.log=📙:\
-#*.iso=📀:\
-#*.img=📀:\
-#*.bib=🎓:\
-#*.ged=👪:\
-#*.part=💔:\
-#*.torrent=🔽:\
-#*.jar=♨:\
-#*.java=♨:\
-#"
-#
-#
-#
-###### the ctpv configurations ###
-#export CTPV_WORKDIR=~/.cache/ctpv
-#export CTPV_CLEANUP=1
-###########################3
-#
-#
-#
-#
-#
-##### harfbuzz libs and src #####33
-##export LD_LIBRARY_PATH=/home/kareem/Documents/harfbuzz/harfbuzz-11.0.0/src:$LD_LIBRARY_PATH
-##export PKG_CONFIG_PATH=/home/kareem/Documents/harfbuzz/harfbuzz-11.0.0:$PKG_CONFIG_PATH
-####################
-##export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
-#
-#
-#
-#
-### alias for wifi nmtui connection ##
-#alias wifi=nmtui
-######
-#
-#eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+
 #
 #
 #
@@ -318,9 +322,9 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#abd8eb"
 ##xset fp rehash
 
 
-for file in ~/.zshrc.d/*.zsh; do
-  source "$file"
-done
+# for file in ~/.zshrc.d/*.zsh; do
+#   source "$file"
+# done
 
 
 export NVM_DIR="$HOME/.nvm"

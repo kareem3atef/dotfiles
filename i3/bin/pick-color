@@ -1,4 +1,0 @@
-#!/bin/bash
-
-pkill gpick || gpick -o -s | xclip -sel c
-
