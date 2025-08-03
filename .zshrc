@@ -111,10 +111,16 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(colorize
 	git
 	zsh-autosuggestions
+    you-should-use
+    # zsh-autocomplete
 	zsh-syntax-highlighting
 	colored-man-pages
 	docker
+    web-search
 	systemd
+    # colorize
+    conda
+    dbt
 )
 
 source $ZSH/oh-my-zsh.sh

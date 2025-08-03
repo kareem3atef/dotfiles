@@ -1,0 +1,249 @@
+{
+  "explorer.compactFolders": false,
+
+  "window.menuBarVisibility": "toggle",
+  "window.density.editorTabHeight": "compact",
+  "window.titleBarStyle": "custom",
+
+  // Editor:
+  // "editor.tabSize": 2,
+  // "editor.fontSize": 17,
+  // "editor.fontFamily": "JetBrainsMono Nerd Font",
+  "editor.wordWrap": "bounded",
+  "editor.lineNumbers": "relative",
+  "editor.wordWrapColumn": 150,
+  "editor.folding": false,
+  "editor.glyphMargin": false,
+  "editor.smoothScrolling": false,
+  "editor.quickSuggestionsDelay": 0,
+  "editor.cursorBlinking": "blink",
+  "editor.bracketPairColorization.enabled": false,
+  "editor.scrollbar.horizontal": "hidden",
+  "editor.scrollbar.vertical": "hidden",
+  "editor.hideCursorInOverviewRuler": true,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.formatOnSave": true,
+  "editor.minimap.enabled": false,
+  "window.openFilesInNewWindow": "off",
+  "workbench.sideBar.location": "left",
+  "workbench.startupEditor": "none",
+  // "workbench.colorCustomizations": {
+  // "statusBarItem.remoteBackground": "#00000000",
+  // "scrollbarSlider.background": "#00000000"
+  // },
+
+  // zenMode
+  "zenMode.showTabs": "multiple",
+  "zenMode.hideLineNumbers": false,
+  "zenMode.centerLayout": false,
+  "zenMode.hideStatusBar": false,
+
+  // Telemetry (VSCODE)
+  "extensions.experimental.affinity": { "vscodevim.vim": 1 },
+  "telemetry.telemetryLevel": "off",
+  "vim.useSystemClipboard": true,
+  "vim.leader": "<space>",
+  "vim.surround": true,
+  "vim.commentary": true,
+  "vim.foldfix": false,
+  "vim.easymotion": true,
+  "vim.incsearch": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.searchMatchTextColor": "#e6e3de",
+
+  "vim.highlightedyank.enable": true,
+  "vim.highlightedyank.duration": 250,
+  "vim.highlightedyank.color": "rgba(228, 228, 228, 0.101)",
+  "vim.highlightedyank.textColor": "#e6e3de",
+
+  // INSERT MODE
+  "vim.insertModeKeyBindings": [
+    { "before": ["j", "k"], "after": ["<Esc>"] }
+    // { "before": ["<C-h>"], "after": ["<Left>"] },
+    // { "before": ["<C-l>"], "after": ["<Right>"] },
+    // { "before": ["<C-j>"], "after": ["<Down>"] },
+    // { "before": ["<C-k>"], "after": ["<Up>"] }
+  ],
+
+  "vim.normalModeKeyBindings": [
+    // {
+    //   "before": ["g", "c", "c"],
+    //   "commands": ["editor.action.commentLine"]
+    // },
+    {
+      "before": ["<leader>", "h"],
+      "commands": ["workbench.action.navigateLeft"]
+    },
+    {
+      "before": ["<leader>", "l"],
+      "commands": ["workbench.action.navigateRight"]
+    },
+    {
+      "before": ["<leader>", "j"],
+      "commands": ["workbench.action.navigateDown"]
+    },
+    {
+      "before": ["<leader>", "k"],
+      "commands": ["workbench.action.navigateUp"]
+    },
+    {
+      "before": ["<leader>", "w"],
+      "commands": ["workbench.action.files.save"]
+    },
+    {
+      "before": ["<leader>", "a"],
+      "commands": ["workbench.action.toggleActivityBarVisibility"]
+    },
+    {
+      "before": ["<leader>", "n"],
+      "commands": ["workbench.action.toggleSidebarVisibility"]
+    },
+    { "before": ["<S-h>"], "commands": [":tabp"] },
+    { "before": ["<S-l>"], "commands": [":tabnext"] },
+
+    // splits
+    { "before": ["<leader>", "v"], "commands": [":vsplit"] },
+    { "before": ["<leader>", "s"], "commands": [":split"] },
+
+    // panels
+    {
+      "before": ["<leader>", "<S-h>"],
+      "commands": ["workbench.action.moveEditorToPreviousGroup"]
+    },
+    {
+      "before": ["<leader>", "<S-l>"],
+      "commands": ["workbench.action.moveEditorToNextGroup"]
+    },
+    {
+      "before": ["<leader>", "<S-k>"],
+      "commands": ["workbench.action.moveEditorToAboveGroup"]
+    },
+    {
+      "before": ["<leader>", "<s-j>"],
+      "commands": ["workbench.action.moveEditorToBelowGroup"]
+    },
+    {
+      "before": ["<leader>", "<S-f>"],
+      "commands": ["workbench.action.toggleMaximizeEditorGroup"]
+    },
+
+    // explore
+    {
+      "before": ["<leader>", "e"],
+      "commands": ["workbench.action.toggleSidebarVisibility"]
+    },
+
+    // quite
+    //
+    {
+      "before": ["<leader>", "q"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    },
+    {
+      "before": ["<leader>", "Q"],
+      "commands": ["workbench.action.closeOtherEditors"]
+    },
+
+    // remove highlight after /query
+    {
+      "before": ["C-h"],
+      "commands": [":nohl"]
+    },
+
+    // file browse
+    {
+      "before": ["<leader>", "f", "b"],
+      "commands": ["workbench.action.showAllEditors"]
+    },
+
+    // file format
+    {
+      "before": ["<leader>", "f", "m"],
+      "commands": ["editor.action.format"]
+    },
+
+    // coding
+    {
+      "before": ["<leader>", "g", "d"],
+      "commands": ["editor.action.revealDefinition"]
+    },
+    {
+      "before": ["<leader>", "g", "i"],
+      "commands": ["editor.action.goToImplementation"]
+    },
+    {
+      "before": ["<leader>", "g", "r"],
+      "commands": ["editor.action.goToReferences"]
+    },
+    {
+      "before": ["<S-k>"],
+      "commands": ["editor.action.showHover"]
+    },
+
+    // zen mode
+    {
+      "before": ["leader", "z"],
+      "commands": ["workbench.action.toggleZenMode"]
+    },
+
+    // find it faster
+    {
+      "before": ["leader", "f", "f"],
+      "commands": ["find-it-faster.findFiles"]
+    },
+    {
+      "before": ["leader", "f", "g"],
+      "commands": ["find-it-faster.findWithinFiles"]
+    },
+    {
+      "before": ["leader", "f", "w"],
+      "after": ["y", "i", "w"],
+      "commands": [
+        "find-it-faster.findWithinFiles",
+        "workbench.action.terminal.paste"
+      ]
+    },
+    {
+      "before": ["<leader>", "c", "a"],
+      "commands": ["editor.action.codeAction"]
+    }
+  ],
+
+  //old settings
+  // "C_Cpp.updateChannel": "Insiders",
+  "security.workspace.trust.untrustedFiles": "open",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // "editor.formatOnSave": true,
+  // "files.autoSave": "onFocusChange",
+  "editor.tabSize": 2,
+  // "liveServer.settings.donotShowInfoMsg": true,
+  "git.confirmSync": false,
+  "[cpp]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "git.suggestSmartCommit": false,
+  "database-client.autoSync": true,
+  "window.zoomLevel": 0.7,
+  "editor.fontSize": 18,
+  "debug.console.fontSize": 17,
+  "terminal.integrated.fontSize": 17,
+  "chat.editor.fontSize": 17,
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.integrated.fontFamily": "MesloLGS Nerd Font",
+  "terminal.integrated.minimumContrastRatio": 1,
+  "mssql.connectionGroups": [
+    {
+      "name": "ROOT",
+      "id": "1546B0A7-7BDC-4FA3-BB8C-AC734047096C"
+    }
+  ],
+  "mssql.connections": [],
+  "explorer.confirmDelete": false,
+  // "workbench.colorTheme": "Default Dark Modern"
+  "workbench.colorCustomizations": {
+    "editor.background": "#00000000" // Transparent background
+  },
+  "workbench.colorTheme": "Everforest Dark",
+  "python.condaPath": "/home/kareem/.miniconda"
+}
