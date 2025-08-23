@@ -245,5 +245,9 @@
     "editor.background": "#00000000" // Transparent background
   },
   "workbench.colorTheme": "Everforest Dark",
-  "python.condaPath": "/home/kareem/.miniconda"
+  "python.condaPath": "/home/kareem/.miniconda",
+  "accessibility.signals.terminalBell": {
+    "sound": "on"
+  },
+  "terminal.integrated.enableVisualBell": true
 }

@@ -203,7 +203,6 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 
 #exec --no-startup-id nitrogen --restore
-exec_always --no-startup-id ~/.config/polybar/launch.sh >/dev/null 2>/dev/null
 # exec_always --no-startup-id feh --bg-fill ~/Pictures/lea_seydoux.jpg
 # exec_always --no-startup-id feh --bg-scale ~/Pictures/.lea_seydoux/wallpaperflare.com_wallpaper.jpg
 exec_always --no-startup-id feh --bg-fill ~/Pictures/.lea_seydoux/1744086.jpg
@@ -239,6 +238,7 @@ smart_borders no_gaps
 hide_edge_borders smart_no_gaps
 
 exec_always --no-startup-id killall picom ;  picom
+exec_always --no-startup-id ~/.config/polybar/launch.sh 
 
 # TAB TO CLICK, natural scrolling
 exec xinput set-prop "MSFT0001:00 04F3:3140 Touchpad" "libinput Tapping Enabled" 1
@@ -267,13 +267,14 @@ bindsym $mod+Ctrl+Shift+p exec poweroff
 ####screenshots######
 
 # full screen to clipboard only
-bindsym Print exec  --no-startup-id maim | xclip -selection clipboard -t image/png
+bindsym Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
 
 # full screen and (save + clipboard)
 bindsym $mod+Print exec --no-startup-id maim | tee ~/Pictures/Screenshots/$(date +%s-%N).png | xclip -selection clipboard -t image/png
 
 # selection to clipboard only
 bindsym Ctrl+Shift+s exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
+# bindsym Ctrl+Shift+s exec --no-startup-id maim --freeze -s | xclip -selection clipboard -t image/png
 
 # selection (save + clipboard)
 bindsym $mod+Shift+s exec --no-startup-id maim -s | tee ~/Pictures/Screenshots/$(date +%s-%N).png | xclip -selection clipboard -t image/png

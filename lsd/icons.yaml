@@ -1,0 +1,92 @@
+name:
+  .trash: 
+  .cargo: 
+  .emacs.d: 
+  a.out: 
+  .git: 
+  node_modules: 
+  .vscode: 
+  __pycache__: 
+  .config: 
+  Makefile: 
+  Dockerfile: 
+
+extension:
+  go: 
+  hs: 
+  rs: 🦀
+  py: 
+  js: 
+  ts: 
+  jsx: 
+  tsx: 
+  java: 
+  class: 
+  c: 
+  cpp: 
+  h: 
+  html: 
+  css: 
+  scss: 
+  md: 
+  json: 󰘦
+  yml: 󰈙
+  yaml: 󰈙
+  toml: 
+  lock: 
+  sh: 
+  zsh: 
+  fish: 
+  lua: 
+  sql: 󰆼
+  db: 󰆼
+  csv: 
+  pdf: 
+  txt: 
+  zip: 
+  tar: 
+  mp3: 
+  wav: 
+  mp4: 
+  mkv: 
+  iso: 
+  img: 
+  png: 
+  jpg: 
+  jpeg: 
+  gif: 
+
+filetype:
+  dir: 📂
+  file: 📄
+  pipe: 📩
+  socket: 󰆨
+  executable: 
+  symlink-dir: 
+  symlink-file: 
+  device-char: 
+  device-block: 󰜫
+  special: 
+
+
+
+# name:
+#   .trash: 
+#   .cargo: 
+#   .emacs.d: 
+#   a.out: 
+# extension:
+#   go: 
+#   hs: 
+#   rs: 🦀
+# filetype:
+#   dir: 📂
+#   file: 📄
+#   pipe: 📩
+#   socket: 󰆨
+#   executable: 
+#   symlink-dir: 
+#   symlink-file: 
+#   device-char: 
+#   device-block: 󰜫
+#   special: 
