@@ -238,7 +238,7 @@ smart_borders no_gaps
 hide_edge_borders smart_no_gaps
 
 exec_always --no-startup-id killall picom ;  picom
-exec_always --no-startup-id ~/.config/polybar/launch.sh 
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # TAB TO CLICK, natural scrolling
 exec xinput set-prop "MSFT0001:00 04F3:3140 Touchpad" "libinput Tapping Enabled" 1
