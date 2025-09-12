@@ -37,6 +37,10 @@ set dircounts
 # cmds/functions
 
 
+# cmd yank ${{
+#     printf "%s" "$f" | xclip -selection clipboard
+# }}
+
 
 cmd open ${{
     case $(file --mime-type "$(readlink -f $f)" -b) in
@@ -52,8 +56,7 @@ cmd open ${{
 			lf -remote "send toggle"
 		done &
 		;;
-	audio/*|video/x-ms-asf) mpv --audio-display=no $f ;;
-	video/*) setsid -f vlc -quiet $f  >/dev/null 2>&1 ;;
+    video/*|audio/*) setsid -f mpv $f >/dev/null 2>&1 ;;
 	application/pdf|application/vnd.djvu|application/epub*) setsid -f sioyek $fx >/dev/null 2>&1;;
 	application/pgp-encrypted) $EDITOR $fx ;;
 	application/vnd.openxmlformats-officedocument.wordprocessingml.document|application/vnd.oasis.opendocument.text|application/vnd.openxmlformats-officedocument.spreadsheetml.sheet|application/octet-stream|application/vnd.oasis.opendocument.spreadsheet|application/vnd.oasis.opendocument.spreadsheet-template|application/vnd.openxmlformats-officedocument.presentationml.presentation|application/vnd.oasis.opendocument.presentation-template|application/vnd.oasis.opendocument.presentation|application/vnd.ms-powerpoint|application/vnd.oasis.opendocument.graphics|application/vnd.oasis.opendocument.graphics-template|application/vnd.oasis.opendocument.formula|application/vnd.oasis.opendocument.database) setsid -f libreoffice $fx >/dev/null 2>&1;;
@@ -287,7 +290,10 @@ map V push :!nvim<space>
 
 map W $setsid -f $TERMINAL >/dev/null 2>&1
 
-map Y $printf "%s" "$fx" | xclip -selection clipboard
+# to copy the file path or the basename of the file
+map Y
+map Yb $basename -- "$fx" | xclip -selection clipboard
+map Yp $printf "%s" "$fx" | xclip -selection clipboard
 
 # Source Bookmarks
 

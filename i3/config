@@ -24,7 +24,7 @@ default_border pixel 0
 default_floating_border normal
 
 # Hide borders
-hide_edge_borders none
+# hide_edge_borders none
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -50,7 +50,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
-for_window [class="Alacritty"] floating enable
+for_window [class="Alacritty|copyq"] floating enable
 bindsym $mod+shift+a exec --no-startup-id alacritty
 
 
@@ -215,12 +215,12 @@ bindsym $mod+shift+m nop go master
 # enable/disable master layout in current workspace
 bindsym $mod+alt+m nop master toggle 
 
-## SMART GAPS
-# Only enable gaps on a workspace when there is at least one container
+# ## SMART GAPS
+# # Only enable gaps on a workspace when there is at least one container
 smart_gaps on
 
-# Hide edge borders only if there is one window with no gaps
-# hide_edge_borders smart_no_gaps
+# # Hide edge borders only if there is one window with no gaps
+# # hide_edge_borders smart_no_gaps
 
 gaps inner 9 
 gaps outer 1
@@ -252,8 +252,10 @@ exec_always ~/.config/layout.sh
 
 bindsym $mod+b exec --no-startup-id brave-browser &
 bindsym $mod+z exec --no-startup-id discord &
-bindsym $mod+x exec --no-startup-id /opt/brave.com/brave/brave-browser --app=https://web.whatsapp.com &
-bindsym Shift+$mod+v exec --no-startup-id gpaste-client ui &
+bindsym $mod+x exec --no-startup-id whatsapp & 
+# bindsym Shift+$mod+v exec --no-startup-id gpaste-client ui &
+exec_always --no-startup-id copyq 
+bindsym Shift+$mod+v exec --no-startup-id copyq show
 bindsym $mod+c exec --no-startup-id code &
 #bindsym $mod+t exec nautilus
 bindsym $mod+t exec --no-startup-id thunderbird &
