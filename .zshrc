@@ -265,3 +265,15 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions
+
+
+
+# to build live caption programme
+export ONNX_ROOT=/var/local/onnxruntime/
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/var/local/onnxruntime/lib
+
+
+# export PKG_CONFIG_PATH="/home/linuxbrew/.linuxbrew/lib/pkgconfig:/home/linuxbrew/.linuxbrew/share/pkgconfig:$PKG_CONFIG_PATH"
+# export PKG_CONFIG_PATH="/home/linuxbrew/.linuxbrew/lib/pkgconfig:$PKG_CONFIG_PATH"
+# export LD_LIBRARY_PATH="/home/linuxbrew/.linuxbrew/lib:$LD_LIBRARY_PATH"
+

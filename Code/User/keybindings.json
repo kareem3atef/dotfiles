@@ -1,6 +1,18 @@
 [
   // TERMINAL NAVIGATION
   {
+    // "key": "alt+`",
+    "key": "ctrl+j",
+    "command": "workbench.action.terminal.focus",
+    "when": "!terminalFocus"
+  },
+  {
+    // "key": "alt+`",
+    "key": "ctrl+k",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "terminalFocus"
+  },
+  {
     "key": "ctrl+shift+k",
     "command": "workbench.action.terminal.focusPrevious",
     "when": "terminalFocus"
@@ -209,6 +221,16 @@
       ]
     }
     // "when": "!terminalFocus"
+  },
+  {
+    "key": "f5",
+    "command": "mssql.runQuery",
+    "when": "editorTextFocus && editorLangId == 'sql'"
+  },
+  {
+    "key": "ctrl+shift+e",
+    "command": "-mssql.runQuery",
+    "when": "editorTextFocus && editorLangId == 'sql'"
   }
   // {
   //   "key": "ctrl+shift+f",

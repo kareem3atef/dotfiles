@@ -211,7 +211,7 @@ map <enter> shell
 map z push :z
 map [ scroll_parent_up
 map ] scroll_parent_down
-map gk cd ~/Desktop
+map gk cd ~/Documents
 map gd cd ~/Downloads
 map gh cd 
 map g. cd ~/.config

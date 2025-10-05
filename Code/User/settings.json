@@ -238,7 +238,25 @@
       "id": "1546B0A7-7BDC-4FA3-BB8C-AC734047096C"
     }
   ],
-  "mssql.connections": [],
+  "mssql.connections": [
+    {
+      "authenticationType": "SqlLogin",
+      "connectTimeout": 30,
+      "applicationName": "vscode-mssql",
+      "applicationIntent": "ReadWrite",
+      "server": "localhost,1433",
+      "trustServerCertificate": true,
+      "user": "SA",
+      "password": "",
+      "savePassword": true,
+      "groupId": "1546B0A7-7BDC-4FA3-BB8C-AC734047096C",
+      "id": "6D9375A1-BAD3-450B-BBD2-40E7CAF27EDA",
+      "database": "",
+      "commandTimeout": 30,
+      "encrypt": "Mandatory",
+      "containerName": "sqlserver"
+    }
+  ],
   "explorer.confirmDelete": false,
   // "workbench.colorTheme": "Default Dark Modern"
   "workbench.colorCustomizations": {
@@ -247,7 +265,9 @@
   "workbench.colorTheme": "Everforest Dark",
   "python.condaPath": "/home/kareem/.miniconda",
   "accessibility.signals.terminalBell": {
-    "sound": "on"
+    "sound": "off"
   },
-  "terminal.integrated.enableVisualBell": true
+  "terminal.integrated.enableVisualBell": false,
+  "terminal.integrated.inheritEnv": false,
+  "mdb.mcp.server": "enabled"
 }

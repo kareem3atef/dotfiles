@@ -50,7 +50,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
-for_window [class="Alacritty|copyq"] floating enable
+for_window [class="Alacritty|copyq|Gnome-calculator|Vmplayer"] floating enable
 bindsym $mod+shift+a exec --no-startup-id alacritty
 
 
@@ -260,7 +260,8 @@ bindsym $mod+c exec --no-startup-id code &
 #bindsym $mod+t exec nautilus
 bindsym $mod+t exec --no-startup-id thunderbird &
 bindsym $mod+n exec --no-startup-id stremio &
-bindsym $mod+u exec --no-startup-id kitty -e zsh -c 'source ~/.zshrc && lf' 
+# bindsym $mod+u exec --no-startup-id kitty -e zsh -c 'source ~/.zshrc && lf' 
+bindsym $mod+u exec --no-startup-id kitty -e zsh -c '/home/linuxbrew/.linuxbrew/bin/lf' 
 bindsym $mod+Ctrl+Shift+p exec poweroff
 
 
