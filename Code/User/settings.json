@@ -14,12 +14,12 @@
   "editor.wordWrapColumn": 150,
   "editor.folding": false,
   "editor.glyphMargin": false,
-  "editor.smoothScrolling": false,
+  // "editor.smoothScrolling": false,
   "editor.quickSuggestionsDelay": 0,
   "editor.cursorBlinking": "blink",
   "editor.bracketPairColorization.enabled": false,
   "editor.scrollbar.horizontal": "hidden",
-  "editor.scrollbar.vertical": "hidden",
+  // "editor.scrollbar.vertical": "hidden",
   "editor.hideCursorInOverviewRuler": true,
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.formatOnSave": true,
@@ -71,8 +71,13 @@
     //   "before": ["g", "c", "c"],
     //   "commands": ["editor.action.commentLine"]
     // },
+    // i don't like h for left because i use it to :nohl in vim
+    // {
+    //   "before": ["<leader>", "h"],
+    //   "commands": ["workbench.action.navigateLeft"]
+    // },
     {
-      "before": ["<leader>", "h"],
+      "before": ["<C-h>"],
       "commands": ["workbench.action.navigateLeft"]
     },
     {
@@ -147,7 +152,7 @@
 
     // remove highlight after /query
     {
-      "before": ["C-h"],
+      "before": ["<leader>", "h"],
       "commands": [":nohl"]
     },
 
@@ -224,7 +229,7 @@
   },
   "git.suggestSmartCommit": false,
   "database-client.autoSync": true,
-  "window.zoomLevel": 0.7,
+  "window.zoomLevel": 1.0,
   "editor.fontSize": 18,
   "debug.console.fontSize": 17,
   "terminal.integrated.fontSize": 17,
@@ -244,16 +249,17 @@
       "connectTimeout": 30,
       "applicationName": "vscode-mssql",
       "applicationIntent": "ReadWrite",
-      "server": "localhost,1433",
+      "profileName": "",
+      "server": "127.0.0.1,1433",
       "trustServerCertificate": true,
       "user": "SA",
       "password": "",
       "savePassword": true,
-      "groupId": "1546B0A7-7BDC-4FA3-BB8C-AC734047096C",
-      "id": "6D9375A1-BAD3-450B-BBD2-40E7CAF27EDA",
       "database": "",
-      "commandTimeout": 30,
       "encrypt": "Mandatory",
+      "groupId": "1546B0A7-7BDC-4FA3-BB8C-AC734047096C",
+      "id": "D5346F83-516C-466A-BD9C-9500D27D1E0F",
+      "commandTimeout": 30,
       "containerName": "sqlserver"
     }
   ],
@@ -269,5 +275,9 @@
   },
   "terminal.integrated.enableVisualBell": false,
   "terminal.integrated.inheritEnv": false,
-  "mdb.mcp.server": "enabled"
+  "mdb.mcp.server": "prompt",
+  "workbench.iconTheme": "material-icon-theme",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.autopep8"
+  }
 }
