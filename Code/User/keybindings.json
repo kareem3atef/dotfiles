@@ -231,6 +231,11 @@
     "key": "ctrl+shift+e",
     "command": "-mssql.runQuery",
     "when": "editorTextFocus && editorLangId == 'sql'"
+  },
+  {
+    "key": "f5",
+    "command": "mysql.runSQLWithoutParse",
+    "when": "editorLangId =~ /sql|dbclient-js|cql|postgres/ || resourceFilename =~ /.sql$/"
   }
   // {
   //   "key": "ctrl+shift+f",
